@@ -51,6 +51,8 @@ MonoBehaviour:
   moveSpeed: 2.5
   diggingSpeed: 2.5
   vibrate_rock_time: 0.2
+  isInTree: 0
+  currTree: {fileID: 0}
 --- !u!81 &1432281943
 AudioListener:
   m_ObjectHideFlags: 0
@@ -166,10 +168,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.25
-  m_Height: 1
+  m_Radius: 0.35728216
+  m_Height: 1.4163812
   m_Direction: 1
-  m_Center: {x: 0, y: 0.5, z: 0}
+  m_Center: {x: 0, y: 0.7023613, z: 0.016355515}
 --- !u!54 &1422992134
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -198,11 +200,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Idle_Animation
       objectReference: {fileID: 0}
-    - target: {fileID: -6057140222963153312, guid: 4d9a8747d8dd4cb45b19fb0721a488c9,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 960d6061bbe86f1409216102b8d2adb2, type: 2}
     - target: {fileID: -4216859302048453862, guid: 4d9a8747d8dd4cb45b19fb0721a488c9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -211,7 +208,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 4d9a8747d8dd4cb45b19fb0721a488c9,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.98
+      value: 0.927
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 4d9a8747d8dd4cb45b19fb0721a488c9,
         type: 3}
@@ -273,6 +270,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.25
       objectReference: {fileID: 0}
+    - target: {fileID: -6057140222963153312, guid: 4d9a8747d8dd4cb45b19fb0721a488c9,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 960d6061bbe86f1409216102b8d2adb2, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d9a8747d8dd4cb45b19fb0721a488c9, type: 3}
 --- !u!4 &5006512735038837666 stripped

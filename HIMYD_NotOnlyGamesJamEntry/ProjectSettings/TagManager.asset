@@ -8,6 +8,8 @@ TagManager:
   - Snake
   - Ground
   - Rock
+  - Hole
+  - Holeup
   layers:
   - Default
   - TransparentFX
