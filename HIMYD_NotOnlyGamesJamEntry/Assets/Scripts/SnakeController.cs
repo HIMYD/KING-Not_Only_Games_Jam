@@ -64,11 +64,12 @@ public class SnakeController : MonoBehaviour
             can_go_up = true;
         }
     }
-    private void OnCollisionExit(Collision collision)
+    private void OnTriggerExit(Collider other)
     {
-        if (collision.gameObject.CompareTag("Vines"))
+        if (other.gameObject.CompareTag("Vines"))
         {
             can_go_up = false;
         }
     }
+  
 }
