@@ -118,6 +118,13 @@ public class MoleController : MonoBehaviour
            
             can_dig = true;
         }
+        if (other.gameObject.CompareTag("Holeup") == true)
+        {
+
+            can_dig = true;
+            diggingDirection.y = 1f;
+        }
+
     }
     private void OnTriggerExit(Collider other)
     {

@@ -9,6 +9,7 @@ TagManager:
   - Ground
   - Rock
   - Hole
+  - Holeup
   layers:
   - Default
   - TransparentFX
