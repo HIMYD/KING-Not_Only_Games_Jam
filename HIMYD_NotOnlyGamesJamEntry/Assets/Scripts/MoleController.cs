@@ -33,7 +33,8 @@ public class MoleController : MonoBehaviour
 
 
     Animator anim;
-    float dig_down_distance = -1.2f;
+    public float dig_down_distance = -1.2f;
+    public float dig_up_distance = 2f;
     private void Start()
     {
         playerIndex = PlayerIndex.One;
@@ -83,9 +84,9 @@ public class MoleController : MonoBehaviour
             //Is diggin' up
             else if (Mathf.Sign(diggingDirection.y) == 1f)
             {
-                if (transform.position.y >= 0f)
+                if (transform.position.y >= dig_up_distance)
                 {
-                    transform.position = new Vector3(transform.position.x, 0f, transform.position.z);
+                    transform.position = new Vector3(transform.position.x, dig_up_distance, transform.position.z);
                     digging = false;
                 }
             }

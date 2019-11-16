@@ -1530,6 +1530,7 @@ GameObject:
   - component: {fileID: 1166114117}
   - component: {fileID: 1166114116}
   - component: {fileID: 1166114115}
+  - component: {fileID: 1166114119}
   m_Layer: 0
   m_Name: Cube (6)
   m_TagString: Holeup
@@ -1610,6 +1611,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1166114119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1166114114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa9996816bb6dd44d962f82e8acaa808, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1211725236
 GameObject:
   m_ObjectHideFlags: 0
@@ -2518,6 +2531,11 @@ PrefabInstance:
     - target: {fileID: 1422992135, guid: 4af2b2d145b85e74a89ed206a000986a, type: 3}
       propertyPath: m_Center.y
       value: 0.7023613
+      objectReference: {fileID: 0}
+    - target: {fileID: 5875971595956046074, guid: 4af2b2d145b85e74a89ed206a000986a,
+        type: 3}
+      propertyPath: dig_up_distance
+      value: 1.6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4af2b2d145b85e74a89ed206a000986a, type: 3}
