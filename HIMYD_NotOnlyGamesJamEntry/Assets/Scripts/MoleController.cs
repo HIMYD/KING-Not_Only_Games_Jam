@@ -18,28 +18,35 @@ public class MoleController : MonoBehaviour
     //CONTROLLER
     PlayerIndex playerIndex;
     GamePadState state;
-
+    button button_a = new button();
     private void Start()
     {
         playerIndex = PlayerIndex.One;
-
+        
+    }
+    private void FixedUpdate()
+    {
+        state = GamePad.GetState(playerIndex);
+        Debug.Log(button_a.state);
     }
     void Update()
     {
-        state = GamePad.GetState(playerIndex);
-        Vector3 movement = new Vector3(state.ThumbSticks.Left.X, 0f, state.ThumbSticks.Left.Y) * moveSpeed * Time.deltaTime;
+        button_a.UpdateValue(state.Buttons.A);
+
+        Vector3 movement = new Vector3(state.ThumbSticks.Left.X, 0f, state.ThumbSticks.Left.Y);
         if (movement != Vector3.zero)
         {
             //Ray
-            if (Physics.Raycast())
-            {
+            //if (Physics.Raycast())
+            //{
 
-            }
+            //}
             transform.position += movement;
         }
 
-        if (Input.GetKeyDown(KeyCode.Z))
+        if (Input.GetKeyDown(KeyCode.Z) || button_a.state==KEY_STATE.KEY_DOWN)
         {
+            Debug.Log("enter");
             moving = true;
             diggingDirection = -diggingDirection;
         }
