@@ -13,10 +13,15 @@ public class MoleController : MonoBehaviour
 
     void Update()
     {
-        Vector3 movement = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical"));
+        Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
         if (movement != Vector3.zero)
         {
             transform.position += movement * moveSpeed * Time.deltaTime;
         }
+
+        //if (Input.GetButtonDown())
+        //{
+
+        //}
     }
 }
