@@ -17,6 +17,9 @@ public class rock : MonoBehaviour
     }
     void OnCollisionEnter(Collision collision)
     {
-      
+      if(collision.gameObject.tag== "Mole")
+        {
+            collision.gameObject.GetComponentInParent<MoleController>().Vibrate();
+        }
     }
 }

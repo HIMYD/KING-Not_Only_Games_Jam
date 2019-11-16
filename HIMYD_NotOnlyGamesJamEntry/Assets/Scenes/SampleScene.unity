@@ -224,7 +224,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!1001 &692089900
 PrefabInstance:
@@ -892,15 +892,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5875971595956046074, guid: 4af2b2d145b85e74a89ed206a000986a,
-        type: 3}
-      propertyPath: digButton
-      value: Z
-      objectReference: {fileID: 0}
     - target: {fileID: 5875971595342540794, guid: 4af2b2d145b85e74a89ed206a000986a,
         type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5875971595956046074, guid: 4af2b2d145b85e74a89ed206a000986a,
+        type: 3}
+      propertyPath: digButton
+      value: Z
       objectReference: {fileID: 0}
     - target: {fileID: 5875971595956046074, guid: 4af2b2d145b85e74a89ed206a000986a,
         type: 3}
