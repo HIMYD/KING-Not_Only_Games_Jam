@@ -23,8 +23,9 @@ public class MoleController : MonoBehaviour
     bool rock_vibration = true;
     float time_vibration;
     public float vibrate_rock_time = 0.2f;
-
+    bool can_dig = false;
     Animator anim;
+    float dig_down_distance = -1.2f;
     private void Start()
     {
         playerIndex = PlayerIndex.One;
@@ -49,7 +50,7 @@ public class MoleController : MonoBehaviour
 
         anim.SetFloat("speed", movement.magnitude);
 
-        if (Input.GetKeyDown(KeyCode.Z) || button_a.state==KEY_STATE.KEY_DOWN)
+        if ( can_dig  == true && (Input.GetKeyDown(KeyCode.Z) || button_a.state==KEY_STATE.KEY_DOWN))
         {
            
             digging = true;
@@ -60,7 +61,7 @@ public class MoleController : MonoBehaviour
         {
             transform.position += diggingDirection * diggingSpeed * Time.deltaTime;
             //Is diggin' down
-            if (Mathf.Sign(diggingDirection.y) ==  -1f)
+            if (Mathf.Sign(diggingDirection.y) == -1f)
             {
                 if (transform.position.y <= -1f)
                 {
@@ -96,5 +97,22 @@ public class MoleController : MonoBehaviour
         }
         
 
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log(other.gameObject.tag);
+
+        if (other.gameObject.CompareTag("Hole")  == true)
+        {
+           
+            can_dig = true;
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Hole"))
+        {
+            can_dig = false;
+        }
     }
 }
