@@ -10,7 +10,7 @@ public class MoleController : MonoBehaviour
     public float moveSpeed = 2.5f;
     //public string digButton = "joystick button 0";
 
-    private bool moving = false;
+    private bool digging = false;
     private Vector3 diggingDirection = Vector3.up;
     public float diggingSpeed = 2.5f;
 
@@ -36,22 +36,17 @@ public class MoleController : MonoBehaviour
         Vector3 movement = new Vector3(state.ThumbSticks.Left.X, 0f, state.ThumbSticks.Left.Y);
         if (movement != Vector3.zero)
         {
-            //Ray
-            //if (Physics.Raycast())
-            //{
-
-            //}
-            transform.position += movement;
+            transform.position += movement * moveSpeed * Time.deltaTime;
         }
 
         if (Input.GetKeyDown(KeyCode.Z) || button_a.state==KEY_STATE.KEY_DOWN)
         {
             Debug.Log("enter");
-            moving = true;
+            digging = true;
             diggingDirection = -diggingDirection;
         }
 
-        if (moving)
+        if (digging)
         {
             transform.position += diggingDirection * diggingSpeed * Time.deltaTime;
             //Is diggin' down
@@ -60,7 +55,7 @@ public class MoleController : MonoBehaviour
                 if (transform.position.y <= -1f)
                 {
                     transform.position = new Vector3(transform.position.x, -1, transform.position.z);
-                    moving = false;
+                    digging = false;
                 }
             }
             //Is diggin' up
@@ -69,7 +64,7 @@ public class MoleController : MonoBehaviour
                 if (transform.position.y >= 0f)
                 {
                     transform.position = new Vector3(transform.position.x, 0f, transform.position.z);
-                    moving = false;
+                    digging = false;
                 }
             }
         }
