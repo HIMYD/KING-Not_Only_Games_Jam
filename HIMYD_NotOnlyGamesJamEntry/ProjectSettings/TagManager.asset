@@ -8,6 +8,9 @@ TagManager:
   - Snake
   - Ground
   - Rock
+  - Hole
+  - Holeup
+  - Vines
   layers:
   - Default
   - TransparentFX
