@@ -27,10 +27,15 @@ public class MoleController : MonoBehaviour
     void Update()
     {
         state = GamePad.GetState(playerIndex);
-        Vector3 movement = new Vector3(state.ThumbSticks.Left.X, 0f, state.ThumbSticks.Left.Y);
+        Vector3 movement = new Vector3(state.ThumbSticks.Left.X, 0f, state.ThumbSticks.Left.Y) * moveSpeed * Time.deltaTime;
         if (movement != Vector3.zero)
         {
-            transform.position += movement * moveSpeed * Time.deltaTime;
+            //Ray
+            if (Physics.Raycast())
+            {
+
+            }
+            transform.position += movement;
         }
 
         if (Input.GetKeyDown(KeyCode.Z))
