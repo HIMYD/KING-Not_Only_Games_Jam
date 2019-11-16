@@ -10,10 +10,11 @@ public class SnakeController : MonoBehaviour
     //CONTROLLER
     PlayerIndex playerIndex;
     GamePadState state;
+    Animator anim;
     private void Start()
     {
         playerIndex = PlayerIndex.Two;
-
+        anim = GetComponentInChildren<Animator>();
     }
 
     void Update()
@@ -24,5 +25,6 @@ public class SnakeController : MonoBehaviour
         {
             transform.position += movement * moveSpeed * Time.deltaTime;
         }
+        anim.SetFloat("speed", movement.magnitude);
     }
 }
