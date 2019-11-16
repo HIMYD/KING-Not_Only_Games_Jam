@@ -29,12 +29,8 @@ public class MoleController : MonoBehaviour
     private void FixedUpdate()
     {
         state = GamePad.GetState(playerIndex);
-<<<<<<< HEAD
         button_a.UpdateValue(state.Buttons.A);
-        
-=======
-        Debug.Log(button_a.state);
->>>>>>> d5abe521263872da1adefddf7c3f9be24db5aa44
+    
     }
     void Update()
     {
