@@ -4,23 +4,11 @@ using UnityEngine;
 
 public class rock : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     private void OnCollisionStay(Collision collision)
     {
-        if (collision.gameObject.tag == "Mole")
+        if (collision.gameObject.CompareTag("Mole"))
         {
-            collision.gameObject.GetComponentInParent<MoleController>().Vibrate();
+            collision.gameObject.GetComponent<MoleController>().Vibrate();
         }
     }
-    
 }
