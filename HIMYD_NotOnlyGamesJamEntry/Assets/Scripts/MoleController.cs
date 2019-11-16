@@ -18,7 +18,8 @@ public class MoleController : MonoBehaviour
     //CONTROLLER
     PlayerIndex playerIndex;
     GamePadState state;
-    button button_a = new button();
+    [HideInInspector]
+    public button button_a = new button();
     bool rock_vibration = true;
     float time_vibration;
     public float vibrate_rock_time = 0.2f;
