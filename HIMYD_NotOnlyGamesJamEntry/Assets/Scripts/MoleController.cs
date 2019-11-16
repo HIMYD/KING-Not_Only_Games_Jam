@@ -19,6 +19,8 @@ public class MoleController : MonoBehaviour
     PlayerIndex playerIndex;
     GamePadState state;
     button button_a = new button();
+    bool rock_vibration = true;
+    float time_vibration;
     private void Start()
     {
         playerIndex = PlayerIndex.One;
@@ -27,7 +29,8 @@ public class MoleController : MonoBehaviour
     private void FixedUpdate()
     {
         state = GamePad.GetState(playerIndex);
-        Debug.Log(button_a.state);
+        button_a.UpdateValue(state.Buttons.A);
+    
     }
     void Update()
     {
@@ -68,5 +71,21 @@ public class MoleController : MonoBehaviour
                 }
             }
         }
+    }
+    public void Vibrate()
+    {
+        if (rock_vibration)
+        {
+            Debug.Log("enter");
+            GamePad.SetVibration(playerIndex, 0.1f, 0.1f);
+            rock_vibration = false;
+            time_vibration = Time.time;
+        }
+        if(!rock_vibration && (Time.time - time_vibration) >= 1)
+        {
+            GamePad.SetVibration(playerIndex, 0.0f, 0f);
+            rock_vibration = true;
+        }
+
     }
 }
