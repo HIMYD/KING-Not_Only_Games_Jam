@@ -74,9 +74,9 @@ public class MoleController : MonoBehaviour
             //Is diggin' down
             if (Mathf.Sign(diggingDirection.y) == -1f)
             {
-                if (transform.position.y <= -1f)
+                if (transform.position.y <= dig_down_distance)
                 {
-                    transform.position = new Vector3(transform.position.x, -1, transform.position.z);
+                    transform.position = new Vector3(transform.position.x, dig_down_distance, transform.position.z);
                     digging = false;
                 }
             }
