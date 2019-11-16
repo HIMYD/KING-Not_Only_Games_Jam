@@ -1,20 +1,33 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using XInputDotNetPure;
 
 public class MoleController : MonoBehaviour
 {
-    public float moveSpeed = 2.5f;
 
+
+    public float moveSpeed = 2.5f;
     //public string digButton = "joystick button 0";
 
     private bool moving = false;
     private Vector3 diggingDirection = Vector3.up;
     public float diggingSpeed = 2.5f;
 
+
+    //CONTROLLER
+    PlayerIndex playerIndex;
+    GamePadState state;
+
+    private void Start()
+    {
+        playerIndex = PlayerIndex.One;
+
+    }
     void Update()
     {
-        Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
+        state = GamePad.GetState(playerIndex);
+        Vector3 movement = new Vector3(state.ThumbSticks.Left.X, 0f, state.ThumbSticks.Left.Y);
         if (movement != Vector3.zero)
         {
             transform.position += movement * moveSpeed * Time.deltaTime;
