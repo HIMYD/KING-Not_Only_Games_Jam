@@ -4,23 +4,22 @@ using UnityEngine;
 
 public class rock : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private AudioSource touchRockSFX;
+
+    private void Start()
     {
-        
+        touchRockSFX = GetComponentInChildren<AudioSource>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     private void OnCollisionStay(Collision collision)
     {
-        if (collision.gameObject.tag == "Mole")
+        if (collision.gameObject.CompareTag("Mole"))
         {
-            collision.gameObject.GetComponentInParent<MoleController>().Vibrate();
+            bool playVibration = collision.gameObject.GetComponent<MoleController>().CollideWithRock();
+            if (playVibration)
+            {
+                touchRockSFX.Play();
+            }
         }
     }
-    
 }
