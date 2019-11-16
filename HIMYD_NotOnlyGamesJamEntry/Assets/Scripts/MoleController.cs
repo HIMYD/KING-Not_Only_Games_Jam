@@ -19,7 +19,7 @@ public class MoleController : MonoBehaviour
     PlayerIndex playerIndex;
     GamePadState state;
     button button_a = new button();
-    bool canVibrate = true;
+    bool rock_vibration = true;
     float time_vibration;
     private void Start()
     {
@@ -38,12 +38,13 @@ public class MoleController : MonoBehaviour
         Vector3 movement = new Vector3(state.ThumbSticks.Left.X, 0f, state.ThumbSticks.Left.Y);
         if (movement != Vector3.zero)
         {
+           
             transform.position += movement * moveSpeed * Time.deltaTime;
         }
 
         if (Input.GetKeyDown(KeyCode.Z) || button_a.state==KEY_STATE.KEY_DOWN)
         {
-            Debug.Log("enter");
+           
             digging = true;
             diggingDirection = -diggingDirection;
         }
@@ -70,23 +71,22 @@ public class MoleController : MonoBehaviour
                 }
             }
         }
-        if (!canVibrate && (Time.time - time_vibration) >= 0.5f)
+        if (!rock_vibration && (Time.time - time_vibration) >= 0.5f)
         {
             GamePad.SetVibration(playerIndex, 0.0f, 0f);
-            canVibrate = true;
+            rock_vibration = true;
         }
     }
-    public bool CollideWithRock()
+    public void Vibrate()
     {
-        if (canVibrate)
+        if (rock_vibration)
         {
             Debug.Log("enter");
             GamePad.SetVibration(playerIndex, 0.1f, 0.1f);
-
-            canVibrate = false;
+            rock_vibration = false;
             time_vibration = Time.time;
-            return true;
         }
-        return false;
+        
+
     }
 }
