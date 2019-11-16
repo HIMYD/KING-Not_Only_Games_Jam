@@ -23,9 +23,12 @@ public class MoleController : MonoBehaviour
     bool rock_vibration = true;
     float time_vibration;
     public float vibrate_rock_time = 0.2f;
+
+    Animator anim;
     private void Start()
     {
         playerIndex = PlayerIndex.One;
+        anim = GetComponentInChildren<Animator>();
         
     }
     private void FixedUpdate()
@@ -43,6 +46,8 @@ public class MoleController : MonoBehaviour
            
             transform.position += movement * moveSpeed * Time.deltaTime;
         }
+
+        anim.SetFloat("speed", movement.magnitude);
 
         if (Input.GetKeyDown(KeyCode.Z) || button_a.state==KEY_STATE.KEY_DOWN)
         {
