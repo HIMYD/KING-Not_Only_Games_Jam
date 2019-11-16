@@ -50,7 +50,6 @@ public class MoleController : MonoBehaviour
         Vector3 movement = new Vector3(state.ThumbSticks.Left.X, 0f, state.ThumbSticks.Left.Y);
         if (movement != Vector3.zero)
         {
-           
             transform.position += movement * moveSpeed * Time.deltaTime;
         }
 
@@ -65,7 +64,7 @@ public class MoleController : MonoBehaviour
             else
             {
                 digging = true;
-                diggingDirection = -diggingDirection;
+              
             }
         }
 
@@ -116,8 +115,8 @@ public class MoleController : MonoBehaviour
 
         if (other.gameObject.CompareTag("Hole")  == true)
         {
-           
             can_dig = true;
+            diggingDirection.y = -1f;
         }
         if (other.gameObject.CompareTag("Holeup") == true)
         {
