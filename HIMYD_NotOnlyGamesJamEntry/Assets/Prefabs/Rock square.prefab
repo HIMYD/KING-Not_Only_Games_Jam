@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3887269782163993089}
   - component: {fileID: 260815838314861052}
+  - component: {fileID: 1583760963195771674}
   m_Layer: 0
   m_Name: Rock square
   m_TagString: Rock
@@ -42,11 +43,23 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 555832034983163435}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: -0.5, z: 0}
+--- !u!114 &1583760963195771674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 555832034983163435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b89649810c048e141a9cb935ba104344, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2050328132781017094
 GameObject:
   m_ObjectHideFlags: 0
