@@ -9,8 +9,8 @@ public class FallingTreeTrigger : MonoBehaviour
 
     private void Start()
     {
-        treeAnimator = transform.parent.GetComponent<Animator>();
-        treeAudioSource = transform.parent.GetComponent<AudioSource>();
+        treeAnimator = transform.parent.GetComponentInChildren<Animator>();
+        treeAudioSource = transform.parent.GetComponentInChildren<AudioSource>();
     }
 
     private void OnTriggerStay(Collider other)
