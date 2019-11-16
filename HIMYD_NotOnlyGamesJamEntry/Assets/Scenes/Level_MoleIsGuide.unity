@@ -5721,10 +5721,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
+  m_Radius: 0.25
   m_Height: 1
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!1001 &386916060
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6550,6 +6550,24 @@ Camera:
     type: 3}
   m_PrefabInstance: {fileID: 7245086557815835161}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &986323803 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8720251573324088684, guid: 7aa0fd2e91456e041a934c767005ba4c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1499598714}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &986323804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 986323803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bf43ce367887404aa6ea2b1d28b77dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1011473097
 PrefabInstance:
   m_ObjectHideFlags: 0

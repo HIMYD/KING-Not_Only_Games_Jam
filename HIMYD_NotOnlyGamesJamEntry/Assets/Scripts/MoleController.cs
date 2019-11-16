@@ -72,6 +72,7 @@ public class MoleController : MonoBehaviour
                 }
             }
         }
+
         if (!rock_vibration && (Time.time - time_vibration) >= vibrate_rock_time)
         {
             GamePad.SetVibration(playerIndex, 0.0f, 0f);
