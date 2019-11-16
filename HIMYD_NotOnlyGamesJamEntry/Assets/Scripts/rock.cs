@@ -4,11 +4,22 @@ using UnityEngine;
 
 public class rock : MonoBehaviour
 {
+    private AudioSource touchRockSFX;
+
+    private void Start()
+    {
+        touchRockSFX = GetComponentInChildren<AudioSource>();
+    }
+
     private void OnCollisionStay(Collision collision)
     {
         if (collision.gameObject.CompareTag("Mole"))
         {
-            collision.gameObject.GetComponent<MoleController>().Vibrate();
+            bool playVibration = collision.gameObject.GetComponent<MoleController>().CollideWithRock();
+            if (playVibration)
+            {
+                touchRockSFX.Play();
+            }
         }
     }
 }

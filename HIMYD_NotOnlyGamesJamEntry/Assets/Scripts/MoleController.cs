@@ -76,14 +76,17 @@ public class MoleController : MonoBehaviour
             canVibrate = true;
         }
     }
-    public void Vibrate()
+    public bool CollideWithRock()
     {
         if (canVibrate)
         {
             Debug.Log("enter");
             GamePad.SetVibration(playerIndex, 0.1f, 0.1f);
+
             canVibrate = false;
             time_vibration = Time.time;
+            return true;
         }
+        return false;
     }
 }

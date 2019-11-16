@@ -4,13 +4,22 @@ using UnityEngine;
 
 public class FallBlock : MonoBehaviour
 {
-    //Make sound
-
-    private void OnTriggerEnter2D(Collider2D collision)
+    public float fallSpeed = 10f;
+    bool movingDown = false;
+    //TODO: Add acceleration
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.CompareTag("Mole") || collision.CompareTag("Snake"))
+        if (other.CompareTag("Mole") || other.CompareTag("Snake"))
         {
-            //fall
+            movingDown = true;
+        }
+    }
+
+    private void Update()
+    {
+        if (movingDown)
+        {
+            transform.parent.position += fallSpeed * Vector3.down * Time.deltaTime;
         }
     }
 }
