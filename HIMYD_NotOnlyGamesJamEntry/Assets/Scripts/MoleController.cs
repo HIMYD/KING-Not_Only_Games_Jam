@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class MoleController : MonoBehaviour
 {
-    public float moveSpeed = 10;
+    public float moveSpeed = 2.5f;
 
-    void Start()
-    {
-        
-    }
+    //public string digButton = "joystick button 0";
+
+    private bool moving = false;
+    private Vector3 diggingDirection = Vector3.up;
+    public float diggingSpeed = 2.5f;
 
     void Update()
     {
@@ -19,9 +20,33 @@ public class MoleController : MonoBehaviour
             transform.position += movement * moveSpeed * Time.deltaTime;
         }
 
-        //if (Input.GetButtonDown())
-        //{
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            moving = true;
+            diggingDirection = -diggingDirection;
+        }
 
-        //}
+        if (moving)
+        {
+            transform.position += diggingDirection * diggingSpeed * Time.deltaTime;
+            //Is diggin' down
+            if (Mathf.Sign(diggingDirection.y) ==  -1f)
+            {
+                if (transform.position.y <= -1f)
+                {
+                    transform.position = new Vector3(transform.position.x, -1, transform.position.z);
+                    moving = false;
+                }
+            }
+            //Is diggin' up
+            else if (Mathf.Sign(diggingDirection.y) == 1f)
+            {
+                if (transform.position.y >= 0f)
+                {
+                    transform.position = new Vector3(transform.position.x, 0f, transform.position.z);
+                    moving = false;
+                }
+            }
+        }
     }
 }

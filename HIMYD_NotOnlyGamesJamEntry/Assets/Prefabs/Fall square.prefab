@@ -137,6 +137,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7873423832394887458}
   - component: {fileID: 6845726854233945353}
+  - component: {fileID: 2869424041135145378}
   m_Layer: 0
   m_Name: Fall square
   m_TagString: Ground
@@ -173,6 +174,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c69b58b7119d460448123345c76f27e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &2869424041135145378
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6845726854233945352}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: -0.5, z: 0}
 --- !u!1 &8408197593383725092
 GameObject:
   m_ObjectHideFlags: 0
@@ -184,7 +198,6 @@ GameObject:
   - component: {fileID: 8408197593383725088}
   - component: {fileID: 8408197593383725091}
   - component: {fileID: 8408197593383725090}
-  - component: {fileID: 8408197593383725093}
   m_Layer: 0
   m_Name: Ground
   m_TagString: Ground
@@ -252,19 +265,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &8408197593383725093
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8408197593383725092}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8408197594472779930
 GameObject:
   m_ObjectHideFlags: 0
@@ -276,7 +276,6 @@ GameObject:
   - component: {fileID: 8408197594472779926}
   - component: {fileID: 8408197594472779929}
   - component: {fileID: 8408197594472779928}
-  - component: {fileID: 8408197594472779931}
   m_Layer: 0
   m_Name: Ground (1)
   m_TagString: Ground
@@ -344,16 +343,3 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &8408197594472779931
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8408197594472779930}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
