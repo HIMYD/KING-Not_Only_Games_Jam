@@ -33,7 +33,8 @@ public class MoleController : MonoBehaviour
 
 
     Animator anim;
-    float dig_down_distance = -1.2f;
+    public float dig_down_distance = -1.2f;
+    public float dig_up_distance = 2f;
     private void Start()
     {
         playerIndex = PlayerIndex.One;
@@ -49,7 +50,6 @@ public class MoleController : MonoBehaviour
         Vector3 movement = new Vector3(state.ThumbSticks.Left.X, 0f, state.ThumbSticks.Left.Y);
         if (movement != Vector3.zero)
         {
-           
             transform.position += movement * moveSpeed * Time.deltaTime;
         }
 
@@ -64,7 +64,7 @@ public class MoleController : MonoBehaviour
             else
             {
                 digging = true;
-                diggingDirection = -diggingDirection;
+              
             }
         }
 
@@ -74,18 +74,18 @@ public class MoleController : MonoBehaviour
             //Is diggin' down
             if (Mathf.Sign(diggingDirection.y) == -1f)
             {
-                if (transform.position.y <= -1f)
+                if (transform.position.y <= dig_down_distance)
                 {
-                    transform.position = new Vector3(transform.position.x, -1, transform.position.z);
+                    transform.position = new Vector3(transform.position.x, dig_down_distance, transform.position.z);
                     digging = false;
                 }
             }
             //Is diggin' up
             else if (Mathf.Sign(diggingDirection.y) == 1f)
             {
-                if (transform.position.y >= 0f)
+                if (transform.position.y >= dig_up_distance)
                 {
-                    transform.position = new Vector3(transform.position.x, 0f, transform.position.z);
+                    transform.position = new Vector3(transform.position.x, dig_up_distance, transform.position.z);
                     digging = false;
                 }
             }
@@ -115,9 +115,16 @@ public class MoleController : MonoBehaviour
 
         if (other.gameObject.CompareTag("Hole")  == true)
         {
-           
             can_dig = true;
+            diggingDirection.y = -1f;
         }
+        if (other.gameObject.CompareTag("Holeup") == true)
+        {
+
+            can_dig = true;
+            diggingDirection.y = 1f;
+        }
+
     }
     private void OnTriggerExit(Collider other)
     {
