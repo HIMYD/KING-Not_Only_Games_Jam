@@ -15,11 +15,12 @@ public class rock : MonoBehaviour
     {
         
     }
-    void OnCollisionEnter(Collision collision)
+    private void OnCollisionStay(Collision collision)
     {
-      if(collision.gameObject.tag== "Mole")
+        if (collision.gameObject.tag == "Mole")
         {
-            collision.gameObject.GetComponentInParent<MoleController>().Vibrate();
+            collision.gameObject.GetComponent<MoleController>().Vibrate();
         }
     }
+    
 }
