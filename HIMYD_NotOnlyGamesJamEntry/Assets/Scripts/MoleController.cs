@@ -23,7 +23,15 @@ public class MoleController : MonoBehaviour
     bool rock_vibration = true;
     float time_vibration;
     public float vibrate_rock_time = 0.2f;
+
     bool can_dig = false;
+
+    [HideInInspector]
+    public bool isInTree = false;
+    [HideInInspector]
+    public FallingTreeTrigger currTree = null;
+
+
     Animator anim;
     float dig_down_distance = -1.2f;
     private void Start()
@@ -32,10 +40,7 @@ public class MoleController : MonoBehaviour
         anim = GetComponentInChildren<Animator>();
         
     }
-    private void FixedUpdate()
-    {
-       
-    }
+
     void Update()
     {
         state = GamePad.GetState(playerIndex);
@@ -52,9 +57,15 @@ public class MoleController : MonoBehaviour
 
         if ( can_dig  == true && (Input.GetKeyDown(KeyCode.Z) || button_a.state==KEY_STATE.KEY_DOWN))
         {
-           
-            digging = true;
-            diggingDirection = -diggingDirection;
+            if (isInTree)
+            {
+                currTree.MakeTreeFall();
+            }
+            else
+            {
+                digging = true;
+                diggingDirection = -diggingDirection;
+            }
         }
 
         if (digging)

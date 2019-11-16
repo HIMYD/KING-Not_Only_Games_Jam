@@ -6,23 +6,36 @@ public class FallingTreeTrigger : MonoBehaviour
 {
     private Animator treeAnimator;
     private AudioSource treeAudioSource;
+    private MoleController moleController;
 
     private void Start()
     {
         treeAnimator = transform.parent.GetComponentInChildren<Animator>();
         treeAudioSource = transform.parent.GetComponentInChildren<AudioSource>();
+        moleController = FindObjectOfType<MoleController>();//Singleton
     }
 
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Mole"))
         {
-            MoleController moleController = other.GetComponent<MoleController>();
-            if (moleController.button_a.state == KEY_STATE.KEY_DOWN)
-            {
-                treeAudioSource.Play();
-                treeAnimator.SetTrigger("Fall");
-            }
+            moleController.isInTree = true;
+            moleController.currTree = this;
         }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Mole"))
+        {
+            moleController.isInTree = false;
+            moleController.currTree = null;
+        }
+    }
+
+    public void MakeTreeFall()
+    {
+        treeAudioSource.Play();
+        treeAnimator.SetTrigger("Fall");
     }
 }
