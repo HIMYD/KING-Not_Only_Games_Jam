@@ -712,7 +712,7 @@ PrefabInstance:
     - target: {fileID: 5875971595956046074, guid: 4af2b2d145b85e74a89ed206a000986a,
         type: 3}
       propertyPath: digButton
-      value: A
+      value: Z
       objectReference: {fileID: 0}
     - target: {fileID: 5875971595342540794, guid: 4af2b2d145b85e74a89ed206a000986a,
         type: 3}
