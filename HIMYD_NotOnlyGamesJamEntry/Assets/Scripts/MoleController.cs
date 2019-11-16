@@ -28,9 +28,12 @@ public class MoleController : MonoBehaviour
     [HideInInspector]
     public FallingTreeTrigger currTree = null;
 
+
+    Animator anim;
     private void Start()
     {
         playerIndex = PlayerIndex.One;
+        anim = GetComponentInChildren<Animator>();
         
     }
 
@@ -45,6 +48,8 @@ public class MoleController : MonoBehaviour
            
             transform.position += movement * moveSpeed * Time.deltaTime;
         }
+
+        anim.SetFloat("speed", movement.magnitude);
 
         if (Input.GetKeyDown(KeyCode.Z) || button_a.state==KEY_STATE.KEY_DOWN)
         {
