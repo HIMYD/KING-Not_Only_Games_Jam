@@ -28,12 +28,11 @@ public class MoleController : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        state = GamePad.GetState(playerIndex);
-        button_a.UpdateValue(state.Buttons.A);
-    
+       
     }
     void Update()
     {
+        state = GamePad.GetState(playerIndex);
         button_a.UpdateValue(state.Buttons.A);
 
         Vector3 movement = new Vector3(state.ThumbSticks.Left.X, 0f, state.ThumbSticks.Left.Y);
@@ -71,6 +70,11 @@ public class MoleController : MonoBehaviour
                 }
             }
         }
+        if (!rock_vibration && (Time.time - time_vibration) >= 0.5f)
+        {
+            GamePad.SetVibration(playerIndex, 0.0f, 0f);
+            rock_vibration = true;
+        }
     }
     public void Vibrate()
     {
@@ -81,11 +85,7 @@ public class MoleController : MonoBehaviour
             rock_vibration = false;
             time_vibration = Time.time;
         }
-        if(!rock_vibration && (Time.time - time_vibration) >= 1)
-        {
-            GamePad.SetVibration(playerIndex, 0.0f, 0f);
-            rock_vibration = true;
-        }
+        
 
     }
 }
