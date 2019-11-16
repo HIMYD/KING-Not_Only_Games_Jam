@@ -37,7 +37,7 @@ public class MoleController : MonoBehaviour
     public float dig_up_distance = 2f;
     private void Start()
     {
-        playerIndex = PlayerIndex.One;
+        playerIndex = PlayerIndex.Two;
         anim = GetComponentInChildren<Animator>();
         
     }

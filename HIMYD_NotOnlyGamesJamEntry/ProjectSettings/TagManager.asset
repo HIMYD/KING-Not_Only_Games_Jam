@@ -10,6 +10,7 @@ TagManager:
   - Rock
   - Hole
   - Holeup
+  - Vines
   layers:
   - Default
   - TransparentFX
