@@ -38,12 +38,13 @@ public class MoleController : MonoBehaviour
         Vector3 movement = new Vector3(state.ThumbSticks.Left.X, 0f, state.ThumbSticks.Left.Y);
         if (movement != Vector3.zero)
         {
+            Debug.Log(movement);
             transform.position += movement * moveSpeed * Time.deltaTime;
         }
 
         if (Input.GetKeyDown(KeyCode.Z) || button_a.state==KEY_STATE.KEY_DOWN)
         {
-            Debug.Log("enter");
+           
             digging = true;
             diggingDirection = -diggingDirection;
         }
