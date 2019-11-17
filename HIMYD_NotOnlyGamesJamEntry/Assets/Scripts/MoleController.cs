@@ -29,15 +29,24 @@ public class MoleController : MonoBehaviour
     [HideInInspector]
     public FallingTreeTrigger currTree = null;
 
+    Rigidbody rb;
 
     Animator anim;
     public float dig_down_distance = -1.2f;
     public float dig_up_distance = 2f;
+
+    private bool underground = false;
+    private AudioSource audioSource;
+    public AudioClip digSFX;
+    public AudioClip walkSFX;
+
     private void Start()
     {
         playerIndex = PlayerIndex.One;
         anim = GetComponentInChildren<Animator>();
-        
+        rb = GetComponent<Rigidbody>();
+        audioSource = GetComponent<AudioSource>();
+        audioSource.clip = walkSFX;
     }
     //ROTATION
     Quaternion targetRotation;
@@ -51,16 +60,23 @@ public class MoleController : MonoBehaviour
         Vector3 movement = new Vector3(state.ThumbSticks.Left.X, 0f, state.ThumbSticks.Left.Y);
         if (movement != Vector3.zero)
         {
-            transform.position += movement * moveSpeed * Time.deltaTime;
+            rb.velocity = movement * moveSpeed;
+            if (!audioSource.isPlaying)
+            {
+                audioSource.Play();
+            }
             targetRotation = Quaternion.LookRotation(movement);
             render_object.transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.time);
+        }
+        else
+        {
+            rb.velocity = Vector3.zero;
         }
 
         anim.SetFloat("speed", movement.magnitude);
 
         if ((Input.GetKeyDown(KeyCode.Z) || button_a.state==KEY_STATE.KEY_DOWN))
         {
-            Debug.Log("pressed z");
             if (isInTree)
             {
                 currTree.MakeTreeFall();
@@ -68,7 +84,8 @@ public class MoleController : MonoBehaviour
             else if (can_dig)
             {
                 digging = true;
-              
+                underground = !underground;
+                audioSource.clip = underground ? digSFX : walkSFX;
             }
         }
 

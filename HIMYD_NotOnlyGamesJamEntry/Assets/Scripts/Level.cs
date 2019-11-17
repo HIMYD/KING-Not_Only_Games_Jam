@@ -5,7 +5,7 @@ using UnityEditor;
 
 public class Level : MonoBehaviour
 {
-    public GameObject gameObject;
+    public GameObject objectPrefab;
     public Vector3 position = Vector3.zero; 
     public Vector3 separation = Vector3.zero;
     public Vector3 number = Vector3.zero;
@@ -25,7 +25,7 @@ public class Level : MonoBehaviour
             }
             else
             {
-                GameObject newGameObject = (GameObject)PrefabUtility.InstantiatePrefab(gameObject);
+                GameObject newGameObject = (GameObject)PrefabUtility.InstantiatePrefab(objectPrefab);
                 newGameObject.transform.position = position;
             }
             position.x += separation.x;
@@ -43,7 +43,7 @@ public class Level : MonoBehaviour
             }
             else
             {
-                GameObject newGameObject = (GameObject)PrefabUtility.InstantiatePrefab(gameObject);
+                GameObject newGameObject = (GameObject)PrefabUtility.InstantiatePrefab(objectPrefab);
                 newGameObject.transform.position = position;
             }
             position.y += separation.y;
@@ -55,7 +55,7 @@ public class Level : MonoBehaviour
         position.z = 0f;
         for (int k = 0; k < numZ; ++k)
         {
-            GameObject newGameObject = (GameObject)PrefabUtility.InstantiatePrefab(gameObject);
+            GameObject newGameObject = (GameObject)PrefabUtility.InstantiatePrefab(objectPrefab);
             newGameObject.transform.position = position;
             position.z += separation.z;
         }
