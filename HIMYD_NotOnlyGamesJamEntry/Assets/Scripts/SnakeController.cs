@@ -20,10 +20,13 @@ public class SnakeController : MonoBehaviour
     public float go_up_speed = 2.5f;
     float go_up_distance = 1.6f;
     private Vector3 diggingDirection = Vector3.up;
+    private Rigidbody rb;
+
     private void Start()
     {
         playerIndex = PlayerIndex.Two;
         anim = GetComponentInChildren<Animator>();
+        rb = GetComponent<Rigidbody>();
     }
 
     void Update()
@@ -34,7 +37,12 @@ public class SnakeController : MonoBehaviour
         Vector3 movement = new Vector3(state.ThumbSticks.Left.X, 0f, state.ThumbSticks.Left.Y);
         if (movement != Vector3.zero)
         {
-            transform.position += movement * moveSpeed * Time.deltaTime;
+            rb.velocity = movement * moveSpeed;
+            //transform.position += movement * moveSpeed * Time.deltaTime;
+        }
+        else
+        {
+            rb.velocity = Vector3.zero;
         }
         anim.SetFloat("speed", movement.magnitude);
         if(can_go_up && button_a.state == KEY_STATE.KEY_DOWN)

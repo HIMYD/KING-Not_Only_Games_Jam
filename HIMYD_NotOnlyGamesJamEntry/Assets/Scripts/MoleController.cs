@@ -29,6 +29,7 @@ public class MoleController : MonoBehaviour
     [HideInInspector]
     public FallingTreeTrigger currTree = null;
 
+    Rigidbody rb;
 
     Animator anim;
     public float dig_down_distance = -1.2f;
@@ -37,7 +38,7 @@ public class MoleController : MonoBehaviour
     {
         playerIndex = PlayerIndex.One;
         anim = GetComponentInChildren<Animator>();
-        
+        rb = GetComponent<Rigidbody>();
     }
 
     void Update()
@@ -48,7 +49,14 @@ public class MoleController : MonoBehaviour
         Vector3 movement = new Vector3(state.ThumbSticks.Left.X, 0f, state.ThumbSticks.Left.Y);
         if (movement != Vector3.zero)
         {
-            transform.position += movement * moveSpeed * Time.deltaTime;
+            Debug.Log("moving");
+            rb.velocity = movement * moveSpeed;
+            //transform.position += movement * moveSpeed * Time.deltaTime;
+        }
+        else
+        {
+            Debug.Log("not moving");
+            rb.velocity = Vector3.zero;
         }
 
         anim.SetFloat("speed", movement.magnitude);
