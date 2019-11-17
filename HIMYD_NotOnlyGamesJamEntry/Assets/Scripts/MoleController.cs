@@ -34,11 +34,16 @@ public class MoleController : MonoBehaviour
     Animator anim;
     public float dig_down_distance = -1.2f;
     public float dig_up_distance = 2f;
+
+    private bool underground = false;
+    private AudioSource audioSource;
+
     private void Start()
     {
         playerIndex = PlayerIndex.One;
         anim = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -51,6 +56,10 @@ public class MoleController : MonoBehaviour
         {
             Debug.Log("moving");
             rb.velocity = movement * moveSpeed;
+            if (underground && !audioSource.isPlaying)
+            {
+                audioSource.Play();
+            }
             //transform.position += movement * moveSpeed * Time.deltaTime;
         }
         else
@@ -71,7 +80,7 @@ public class MoleController : MonoBehaviour
             else if (can_dig)
             {
                 digging = true;
-              
+                underground = true;
             }
         }
 
