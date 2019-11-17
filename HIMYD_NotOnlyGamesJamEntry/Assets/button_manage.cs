@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class button_manage : MonoBehaviour
 {
-    [HideInInspector]
+    
     public bool button_pressed = false;
     public bool snake_button = false;
     public bool mole_button = false;

@@ -18,9 +18,9 @@ public class SnakeController : MonoBehaviour
     bool going_throw_vines = false;
     bool can_go_thrown_vines = false;
     public float go_up_speed = 2.5f;
-    float go_up_distance = 1.6f;
-    float go_down_distance = 0f;
-    private Vector3 diggingDirection = Vector3.up;
+    public float go_up_distance = 1.6f;
+    public float go_down_distance = 0f;
+    private Vector3 diggingDirection = -Vector3.up;
     private Rigidbody rb;
 
 
