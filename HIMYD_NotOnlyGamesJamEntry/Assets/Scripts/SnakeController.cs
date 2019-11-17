@@ -23,7 +23,7 @@ public class SnakeController : MonoBehaviour
     private Vector3 diggingDirection = Vector3.up;
     private void Start()
     {
-        playerIndex = PlayerIndex.One;
+        playerIndex = PlayerIndex.Two;
         anim = GetComponentInChildren<Animator>();
     }
 
