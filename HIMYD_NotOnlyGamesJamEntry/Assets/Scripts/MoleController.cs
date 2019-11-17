@@ -40,6 +40,8 @@ public class MoleController : MonoBehaviour
     public AudioClip digSFX;
     public AudioClip walkSFX;
 
+    public GameObject monticulo;
+
     private void Start()
     {
         playerIndex = PlayerIndex.One;
@@ -83,6 +85,7 @@ public class MoleController : MonoBehaviour
             }
             else if (can_dig)
             {
+                monticulo.SetActive(!monticulo.activeSelf);
                 digging = true;
                 underground = !underground;
                 audioSource.clip = underground ? digSFX : walkSFX;
@@ -147,7 +150,7 @@ public class MoleController : MonoBehaviour
     }
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.CompareTag("Hole"))
+        if (other.gameObject.CompareTag("Hole") || other.gameObject.CompareTag("Holeup"))
         {
             can_dig = false;
         }

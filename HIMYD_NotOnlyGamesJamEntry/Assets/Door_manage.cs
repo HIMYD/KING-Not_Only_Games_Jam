@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Door_manage : MonoBehaviour
 {
-
+    [HideInInspector]
+    public bool buttons_pressed = false;
     public GameObject button_snake;
     public GameObject button_mole;
     public float distance_movement;
@@ -22,6 +23,9 @@ public class Door_manage : MonoBehaviour
     {
         if(button_snake.gameObject.GetComponent<button_manage>().button_pressed && button_mole.gameObject.GetComponent<button_manage>().button_pressed)
         {
+
+            buttons_pressed = true;
+
             if(final_pos < gameObject.transform.position.y)
             {
                 gameObject.transform.position = new Vector3 (gameObject.transform.position.x, gameObject.transform.position.y - door_speed * Time.deltaTime, gameObject.transform.position.z);
