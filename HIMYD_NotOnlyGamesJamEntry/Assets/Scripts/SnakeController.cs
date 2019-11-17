@@ -21,6 +21,11 @@ public class SnakeController : MonoBehaviour
     float go_up_distance = 1.6f;
     float go_down_distance = 0f;
     private Vector3 diggingDirection = Vector3.up;
+
+
+    //ROTATION
+    Quaternion targetRotation;
+    public GameObject render_object;
     private void Start()
     {
         playerIndex = PlayerIndex.Two;
@@ -33,9 +38,12 @@ public class SnakeController : MonoBehaviour
         button_a.UpdateValue(state.Buttons.A);
 
         Vector3 movement = new Vector3(state.ThumbSticks.Left.X, 0f, state.ThumbSticks.Left.Y);
+
         if (movement != Vector3.zero)
         {
             transform.position += movement * moveSpeed * Time.deltaTime;
+            targetRotation = Quaternion.LookRotation(movement);
+            render_object.transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.time);
         }
         anim.SetFloat("speed", movement.magnitude);
         if(can_go_thrown_vines && button_a.state == KEY_STATE.KEY_DOWN)

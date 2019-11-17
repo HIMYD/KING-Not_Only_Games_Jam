@@ -39,6 +39,9 @@ public class MoleController : MonoBehaviour
         anim = GetComponentInChildren<Animator>();
         
     }
+    //ROTATION
+    Quaternion targetRotation;
+    public GameObject render_object;
 
     void Update()
     {
@@ -49,6 +52,8 @@ public class MoleController : MonoBehaviour
         if (movement != Vector3.zero)
         {
             transform.position += movement * moveSpeed * Time.deltaTime;
+            targetRotation = Quaternion.LookRotation(movement);
+            render_object.transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.time);
         }
 
         anim.SetFloat("speed", movement.magnitude);
