@@ -8,7 +8,7 @@ public class SnakeController : MonoBehaviour
     public float moveSpeed = 2.5f;
 
     //CONTROLLER
-    PlayerIndex playerIndex;
+   public PlayerIndex playerIndex  = PlayerIndex.Two;
     GamePadState state;
    public button button_a = new button();
 
@@ -18,9 +18,9 @@ public class SnakeController : MonoBehaviour
     bool going_throw_vines = false;
     bool can_go_thrown_vines = false;
     public float go_up_speed = 2.5f;
-    float go_up_distance = 1.6f;
-    float go_down_distance = 0f;
-    private Vector3 diggingDirection = Vector3.up;
+    public float go_up_distance = 1.6f;
+    public float go_down_distance = 0f;
+    private Vector3 diggingDirection = -Vector3.up;
     private Rigidbody rb;
 
 
@@ -30,7 +30,7 @@ public class SnakeController : MonoBehaviour
 
     private void Start()
     {
-        playerIndex = PlayerIndex.Two;
+        
         anim = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody>();
     }
@@ -46,7 +46,7 @@ public class SnakeController : MonoBehaviour
         {
             rb.velocity = movement * moveSpeed;
             targetRotation = Quaternion.LookRotation(movement);
-            render_object.transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.time);
+            render_object.transform.rotation = targetRotation;
         }
         else
         {
