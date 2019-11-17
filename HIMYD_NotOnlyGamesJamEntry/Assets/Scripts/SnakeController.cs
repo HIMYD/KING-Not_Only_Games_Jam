@@ -10,7 +10,7 @@ public class SnakeController : MonoBehaviour
     //CONTROLLER
     PlayerIndex playerIndex;
     GamePadState state;
-    button button_a = new button();
+   public button button_a = new button();
 
     Animator anim;
 
