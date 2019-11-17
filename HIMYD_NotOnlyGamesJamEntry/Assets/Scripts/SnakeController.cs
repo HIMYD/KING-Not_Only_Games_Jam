@@ -8,7 +8,7 @@ public class SnakeController : MonoBehaviour
     public float moveSpeed = 2.5f;
 
     //CONTROLLER
-    PlayerIndex playerIndex;
+   public PlayerIndex playerIndex  = PlayerIndex.Two;
     GamePadState state;
    public button button_a = new button();
 
@@ -30,7 +30,7 @@ public class SnakeController : MonoBehaviour
 
     private void Start()
     {
-        playerIndex = PlayerIndex.Two;
+        
         anim = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody>();
     }
@@ -46,7 +46,7 @@ public class SnakeController : MonoBehaviour
         {
             rb.velocity = movement * moveSpeed;
             targetRotation = Quaternion.LookRotation(movement);
-            render_object.transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.time);
+            render_object.transform.rotation = targetRotation;
         }
         else
         {

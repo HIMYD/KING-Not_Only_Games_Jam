@@ -14,7 +14,7 @@ public class MoleController : MonoBehaviour
 
 
     //CONTROLLER
-    PlayerIndex playerIndex;
+   public PlayerIndex playerIndex = PlayerIndex.One;
     GamePadState state;
     [HideInInspector]
     public button button_a = new button();
@@ -42,7 +42,7 @@ public class MoleController : MonoBehaviour
 
     private void Start()
     {
-        playerIndex = PlayerIndex.One;
+       
         anim = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody>();
         audioSource = GetComponent<AudioSource>();
