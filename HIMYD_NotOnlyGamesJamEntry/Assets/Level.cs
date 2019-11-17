@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 public class Level : MonoBehaviour
 {
@@ -24,7 +25,8 @@ public class Level : MonoBehaviour
             }
             else
             {
-                Instantiate(gameObject, position, Quaternion.identity);
+                GameObject newGameObject = (GameObject)PrefabUtility.InstantiatePrefab(gameObject);
+                newGameObject.transform.position = position;
             }
             position.x += separation.x;
         }
@@ -41,7 +43,8 @@ public class Level : MonoBehaviour
             }
             else
             {
-                Instantiate(gameObject, position, Quaternion.identity);
+                GameObject newGameObject = (GameObject)PrefabUtility.InstantiatePrefab(gameObject);
+                newGameObject.transform.position = position;
             }
             position.y += separation.y;
         }
@@ -52,7 +55,8 @@ public class Level : MonoBehaviour
         position.z = 0f;
         for (int k = 0; k < numZ; ++k)
         {
-            Instantiate(gameObject, position, Quaternion.identity);
+            GameObject newGameObject = (GameObject)PrefabUtility.InstantiatePrefab(gameObject);
+            newGameObject.transform.position = position;
             position.z += separation.z;
         }
     }

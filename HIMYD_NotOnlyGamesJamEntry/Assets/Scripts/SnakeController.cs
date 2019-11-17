@@ -10,19 +10,20 @@ public class SnakeController : MonoBehaviour
     //CONTROLLER
     PlayerIndex playerIndex;
     GamePadState state;
-    button button_a = new button();
+   public button button_a = new button();
 
     Animator anim;
 
 
-    bool going_up = false;
-    bool can_go_up = false;
+    bool going_throw_vines = false;
+    bool can_go_thrown_vines = false;
     public float go_up_speed = 2.5f;
     float go_up_distance = 1.6f;
+    float go_down_distance = 0f;
     private Vector3 diggingDirection = Vector3.up;
     private void Start()
     {
-        playerIndex = PlayerIndex.One;
+        playerIndex = PlayerIndex.Two;
         anim = GetComponentInChildren<Animator>();
     }
 
@@ -37,11 +38,12 @@ public class SnakeController : MonoBehaviour
             transform.position += movement * moveSpeed * Time.deltaTime;
         }
         anim.SetFloat("speed", movement.magnitude);
-        if(can_go_up && button_a.state == KEY_STATE.KEY_DOWN)
+        if(can_go_thrown_vines && button_a.state == KEY_STATE.KEY_DOWN)
         {
-            going_up = true;
+            going_throw_vines = true;
+            diggingDirection.y = -diggingDirection.y;
         }
-        if(going_up)
+        if(going_throw_vines)
         {
             transform.position += diggingDirection * go_up_speed * Time.deltaTime;
             if (Mathf.Sign(diggingDirection.y) == 1f)
@@ -49,10 +51,18 @@ public class SnakeController : MonoBehaviour
                 if (transform.position.y >= go_up_distance)
                 {
                     transform.position = new Vector3(transform.position.x, go_up_distance, transform.position.z);
-                    going_up = false;
+                    going_throw_vines = false;
                 }
             }
-               
+            else if (Mathf.Sign(diggingDirection.y) == -1f)
+            {
+                if (transform.position.y <= go_down_distance)
+                {
+                    transform.position = new Vector3(transform.position.x, go_down_distance, transform.position.z);
+                    going_throw_vines = false;
+                }
+            }
+
         }
 
     }
@@ -60,15 +70,15 @@ public class SnakeController : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Vines"))
         {
-           
-            can_go_up = true;
+            can_go_thrown_vines = true;
         }
     }
-    private void OnCollisionExit(Collision collision)
+    private void OnTriggerExit(Collider other)
     {
-        if (collision.gameObject.CompareTag("Vines"))
+        if (other.gameObject.CompareTag("Vines"))
         {
-            can_go_up = false;
+            can_go_thrown_vines = false;
         }
     }
+  
 }

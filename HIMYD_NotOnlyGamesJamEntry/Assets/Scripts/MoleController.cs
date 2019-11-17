@@ -5,8 +5,6 @@ using XInputDotNetPure;
 
 public class MoleController : MonoBehaviour
 {
-
-
     public float moveSpeed = 2.5f;
     //public string digButton = "joystick button 0";
 
@@ -37,7 +35,7 @@ public class MoleController : MonoBehaviour
     public float dig_up_distance = 2f;
     private void Start()
     {
-        playerIndex = PlayerIndex.Two;
+        playerIndex = PlayerIndex.One;
         anim = GetComponentInChildren<Animator>();
         
     }
@@ -55,13 +53,14 @@ public class MoleController : MonoBehaviour
 
         anim.SetFloat("speed", movement.magnitude);
 
-        if ( can_dig  == true && (Input.GetKeyDown(KeyCode.Z) || button_a.state==KEY_STATE.KEY_DOWN))
+        if ((Input.GetKeyDown(KeyCode.Z) || button_a.state==KEY_STATE.KEY_DOWN))
         {
+            Debug.Log("pressed z");
             if (isInTree)
             {
                 currTree.MakeTreeFall();
             }
-            else
+            else if (can_dig)
             {
                 digging = true;
               
@@ -111,8 +110,6 @@ public class MoleController : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.gameObject.tag);
-
         if (other.gameObject.CompareTag("Hole")  == true)
         {
             can_dig = true;
