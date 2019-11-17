@@ -1257,8 +1257,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a041be6f54f839d489a335334524ae18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameObject: {fileID: 8720251573324088684, guid: 7aa0fd2e91456e041a934c767005ba4c,
-    type: 3}
+  objectPrefab: {fileID: 0}
   position: {x: 3, y: 1, z: 3}
   separation: {x: 1, y: 1, z: 1}
   number: {x: 3, y: 1, z: 3}
