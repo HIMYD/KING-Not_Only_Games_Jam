@@ -23,6 +23,11 @@ public class SnakeController : MonoBehaviour
     private Vector3 diggingDirection = Vector3.up;
     private Rigidbody rb;
 
+
+    //ROTATION
+    Quaternion targetRotation;
+    public GameObject render_object;
+
     private void Start()
     {
         playerIndex = PlayerIndex.Two;
@@ -36,10 +41,12 @@ public class SnakeController : MonoBehaviour
         button_a.UpdateValue(state.Buttons.A);
 
         Vector3 movement = new Vector3(state.ThumbSticks.Left.X, 0f, state.ThumbSticks.Left.Y);
+
         if (movement != Vector3.zero)
         {
             rb.velocity = movement * moveSpeed;
-            //transform.position += movement * moveSpeed * Time.deltaTime;
+            targetRotation = Quaternion.LookRotation(movement);
+            render_object.transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.time);
         }
         else
         {

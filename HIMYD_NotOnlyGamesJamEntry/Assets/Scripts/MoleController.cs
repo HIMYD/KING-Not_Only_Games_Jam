@@ -45,6 +45,9 @@ public class MoleController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         audioSource = GetComponent<AudioSource>();
     }
+    //ROTATION
+    Quaternion targetRotation;
+    public GameObject render_object;
 
     void Update()
     {
@@ -54,17 +57,16 @@ public class MoleController : MonoBehaviour
         Vector3 movement = new Vector3(state.ThumbSticks.Left.X, 0f, state.ThumbSticks.Left.Y);
         if (movement != Vector3.zero)
         {
-            Debug.Log("moving");
             rb.velocity = movement * moveSpeed;
             if (underground && !audioSource.isPlaying)
             {
                 audioSource.Play();
             }
-            //transform.position += movement * moveSpeed * Time.deltaTime;
+            targetRotation = Quaternion.LookRotation(movement);
+            render_object.transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.time);
         }
         else
         {
-            Debug.Log("not moving");
             rb.velocity = Vector3.zero;
         }
 
