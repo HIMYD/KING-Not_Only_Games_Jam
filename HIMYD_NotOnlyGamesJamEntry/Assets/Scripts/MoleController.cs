@@ -74,7 +74,6 @@ public class MoleController : MonoBehaviour
 
         if ((Input.GetKeyDown(KeyCode.Z) || button_a.state==KEY_STATE.KEY_DOWN))
         {
-            Debug.Log("pressed z");
             if (isInTree)
             {
                 currTree.MakeTreeFall();
@@ -82,7 +81,7 @@ public class MoleController : MonoBehaviour
             else if (can_dig)
             {
                 digging = true;
-                underground = true;
+                underground = !underground;
             }
         }
 
