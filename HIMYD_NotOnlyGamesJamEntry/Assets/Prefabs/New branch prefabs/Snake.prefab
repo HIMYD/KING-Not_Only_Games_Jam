@@ -453,10 +453,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e52e35d87365ae24f986d8882129ac86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forward: 0
-  back: 0
-  left: 0
-  right: 0
+  forward: 105
+  back: 107
+  left: 106
+  right: 108
   movementSpeed: 10
   minDistance: 0.1
   playerIndex: 1
@@ -573,7 +573,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 5426784262039964697, guid: 5a535670674df5e4fb92e2d00e3fba77, type: 3}
+  - {fileID: 2100000, guid: 4f02032f5161c344aba7813048fabdc2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
