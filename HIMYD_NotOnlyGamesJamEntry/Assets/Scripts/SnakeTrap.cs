@@ -9,16 +9,14 @@ public class SnakeTrap : MonoBehaviour
 
     private void Start()
     {
-        moleTransform = FindObjectOfType<MoleController>().transform;
+        moleTransform = GameObject.Find("Mole_2").transform;
         trapSFX = GetComponent<AudioSource>();
     }
 
     private void Update()
     {
-        
         if ((int)transform.position.x ==  (int)moleTransform.position.x
-            && (int)transform.position.z == (int)moleTransform.position.z
-            && (int)transform.position.y > (int)moleTransform.position.y)
+            && (int)transform.position.z == (int)moleTransform.position.z)
         {
             if (!trapSFX.isPlaying)
             {
