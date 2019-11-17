@@ -37,6 +37,8 @@ public class MoleController : MonoBehaviour
 
     private bool underground = false;
     private AudioSource audioSource;
+    public AudioClip digSFX;
+    public AudioClip walkSFX;
 
     private void Start()
     {
@@ -44,6 +46,7 @@ public class MoleController : MonoBehaviour
         anim = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody>();
         audioSource = GetComponent<AudioSource>();
+        audioSource.clip = walkSFX;
     }
     //ROTATION
     Quaternion targetRotation;
@@ -58,7 +61,7 @@ public class MoleController : MonoBehaviour
         if (movement != Vector3.zero)
         {
             rb.velocity = movement * moveSpeed;
-            if (underground && !audioSource.isPlaying)
+            if (!audioSource.isPlaying)
             {
                 audioSource.Play();
             }
@@ -82,6 +85,7 @@ public class MoleController : MonoBehaviour
             {
                 digging = true;
                 underground = !underground;
+                audioSource.clip = underground ? digSFX : walkSFX;
             }
         }
 
