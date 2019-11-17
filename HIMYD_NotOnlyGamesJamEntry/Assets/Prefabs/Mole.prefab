@@ -53,6 +53,9 @@ MonoBehaviour:
   vibrate_rock_time: 0.2
   isInTree: 0
   currTree: {fileID: 0}
+  dig_down_distance: -1.2
+  dig_up_distance: 1.6
+  render_object: {fileID: 8296172668963742129}
 --- !u!81 &1432281943
 AudioListener:
   m_ObjectHideFlags: 0
@@ -277,6 +280,12 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: 960d6061bbe86f1409216102b8d2adb2, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d9a8747d8dd4cb45b19fb0721a488c9, type: 3}
+--- !u!1 &8296172668963742129 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 4d9a8747d8dd4cb45b19fb0721a488c9,
+    type: 3}
+  m_PrefabInstance: {fileID: 250362040}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5006512735038837666 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 4d9a8747d8dd4cb45b19fb0721a488c9,
