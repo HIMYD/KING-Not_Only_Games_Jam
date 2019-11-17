@@ -147,7 +147,7 @@ public class MoleController : MonoBehaviour
     }
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.CompareTag("Hole"))
+        if (other.gameObject.CompareTag("Hole") || other.gameObject.CompareTag("Holeup"))
         {
             can_dig = false;
         }
